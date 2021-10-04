@@ -2,10 +2,49 @@
 //
 
 #include <iostream>
+#include <string>
+using namespace std;
+
+class String
+{
+    char* data;
+    int n;
+public:
+    //String() {};
+    String(const char* s = 0)
+    {
+        if (s == 0)
+        {
+            this->data = 0;
+            this->n = 0;
+            return;
+        }
+        const char* p = s;
+        int ncount = 0;
+        while (*p)
+        {
+            p++;
+            ncount++;
+        }
+        this->data = new char(ncount+1);
+        for (int i=0; i<ncount; i++)
+        {
+            this->data[i] = s[i];
+        }
+        this->data[ncount] = '\0';
+        this->n = ncount;
+    }
+
+};
 
 int main()
 {
     std::cout << "Hello World!\n";
+    cout << (int)3.14 << endl;
+
+    String str1,str2("hello world");
+
+    //cout << str2<<endl;
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
