@@ -10,7 +10,6 @@ class String
     char* data;
     int n;
 public:
-    //String() {};
     String(const char* s = 0)
     {
         if (s == 0)
@@ -26,7 +25,7 @@ public:
             p++;
             ncount++;
         }
-        this->data = new char(ncount+1);
+        this->data = new char[ncount+1];
         for (int i=0; i<ncount; i++)
         {
             this->data[i] = s[i];
@@ -35,16 +34,83 @@ public:
         this->n = ncount;
     }
 
+    ~String() 
+    {
+        delete[]data;
+        data = nullptr;
+    }
+
+    /*String(const String &s)
+    {
+        data = s.data;
+        n = s.n;
+        cout << "拷贝构造函数" << endl;
+    }*/
+
+	String(const String& s)
+	{
+		data = new char[s.n + 1];
+		n = s.n;
+		for (int i = 0; i < s.n; i++)
+		{
+			data[i] = s.data[i];
+		}
+		data[n] = '\0';
+		cout << "拷贝构造函数" << endl;
+	}
+
+    int size()
+    {
+        return n;
+    }
+
+	char operator[](int i)const
+	{
+		if (i<0 || i>=n)
+		{
+			throw"下标非法";
+		}
+		return data[i];
+	}
+
+	char& operator[](int i)
+	{
+		if (i < 0 || i >= n)
+		{
+			throw"下标非法";
+		}
+		return data[i];
+	}
 };
+
+ostream& operator<<(ostream& o, String s)
+{
+    for (int i=0; i<s.size(); i++)
+    {
+        cout << s[i];
+
+    }
+    return o;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    cout << (int)3.14 << endl;
+    /*std::cout << "Hello World!\n";
+    cout << (int)3.14 << endl;*/
 
     String str1,str2("hello world");
+    str2[1] = 'E';
+    
+    String str3 = str2;//拷贝
+    str3[4] = 'O';
 
-    //cout << str2<<endl;
+
+	cout << str2[1] << endl;
+	cout << str2 << endl;
+    cout << str3 << endl;
+	cout << str2 << endl;
+
+
 }
 
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
