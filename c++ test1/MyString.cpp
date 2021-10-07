@@ -33,7 +33,7 @@ MyString::~MyString()
     data = nullptr;
 }
 
-/*MyString(const MyString &s)
+/*MyString(const MyString &s)//原始拷贝构造函数
 {
     data = s.data;
     n = s.n;
@@ -61,7 +61,7 @@ char MyString::operator[](int i)const
 {
     if (i < 0 || i >= n)
     {
-        throw"下标非法";
+        throw "下标非法";
     }
     return data[i];
 }
@@ -70,7 +70,7 @@ char& MyString::operator[](int i)
 {
     if (i < 0 || i >= n)
     {
-        throw"下标非法";
+        throw "下标非法";
     }
     return data[i];
 }
