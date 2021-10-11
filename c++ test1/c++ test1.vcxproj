@@ -140,10 +140,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="c++ test1.cpp" />
+    <ClCompile Include="CAddress.cpp" />
+    <ClCompile Include="Cline.cpp" />
+    <ClCompile Include="Complex.cpp" />
+    <ClCompile Include="CStudent.cpp" />
     <ClCompile Include="MyString.cpp" />
+    <ClCompile Include="Person.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CAddress.h" />
+    <ClInclude Include="Cline.h" />
+    <ClInclude Include="Complex.h" />
+    <ClInclude Include="CStudent.h" />
     <ClInclude Include="MyString.h" />
+    <ClInclude Include="Person.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
