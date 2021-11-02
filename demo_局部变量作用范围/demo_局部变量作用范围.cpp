@@ -14,7 +14,7 @@ int main1()
     return 0;
 }
 
-int main()
+int main2()
 {
     for (int i=0; i<10; i++)
     {
@@ -30,3 +30,14 @@ int main()
 
     return 0;
 }
+
+int main()
+{
+    int a = 0,b=2,c=0;
+    int d = 01;
+    c = (5 < 3) ? a : b;
+    cout << c << endl;
+    cout << d << endl;
+    return 0;
+}
+
