@@ -7,7 +7,7 @@
 #include "Person.h"
 #include "CStudent.h"
 #include "CAddress.h"
-
+#include <stack>
 
 
 
@@ -125,7 +125,7 @@ int main5()
 //    cout << obj.m_pName << "年龄是" << obj.m_nAge << "成绩是" << obj.m_fScore << endl;
 //}
 
-int main()
+int main6()
 {
 	 //char* ptest = "zzd";
 
@@ -140,3 +140,153 @@ int main()
     //show(*pstu);
     return 0;
  }
+
+enum string {
+	x1,
+	x2,
+	x3 = 10,
+	x4,
+	x5,
+} x;
+
+
+int main7()
+{
+    /*int* p1 = new int[10];
+    int* p2 = new int[10]();
+    cout << *p2 << endl;
+    cout << *(p2+1) << endl;
+    cout << *(p2+6) << endl;
+    cout << p2 << endl;
+
+    cout << x << endl;*/
+
+	char str[] = "glad to test something";
+	char* p = str;
+	p++;
+	int* p1 = reinterpret_cast<int*>(p);
+	p1++;
+	p = reinterpret_cast<char*>(p1);
+	printf("result is %s\n", p);
+
+    return 0;
+}
+
+
+int FindSubString(char* pch)
+{
+	int   count = 0;
+	char* p1 = pch;
+	while (*p1 != '\0')
+	{
+		if (*p1 == p1[1] - 1)
+		{
+			p1++;
+			count++;
+		}
+		else {
+			break;
+		}
+	}
+	int count2 = count;
+	while (*p1 != '\0')
+	{
+		if (*p1 == p1[1] + 1)
+		{
+			p1++;
+			count2--;
+		}
+		else {
+			break;
+		}
+	}
+	if (count2 == 0)
+		return(count);
+	return(0);
+}
+void ModifyString(char* pText)
+{
+	char* p1 = pText;
+	char* p2 = p1;
+	while (*p1 != '\0')
+	{
+		int count = FindSubString(p1);
+		if (count > 0)
+		{
+			*p2++ = *p1;
+			sprintf_s(p2, sizeof(p2), "%i", count);
+			while (*p2 != '\0')
+			{
+				p2++;
+			}
+			p1 += count + count + 1;
+		}
+		else {
+			*p2++ = *p1++;
+		}
+	}
+}
+void exam1(void)
+{
+	char text[32] = "XYBCDCBABABA";
+	ModifyString(text);
+	printf(text);
+	
+
+}
+
+void exam2()
+{
+	char buffer[6] = { 0 };
+	cout << buffer << endl;
+}
+
+void example(char acWelcome[]) {
+	printf("%d\n", sizeof(acWelcome));
+	return;
+}
+void exam3() {
+	char acWelcome[] = "Welcome to Huawei Test";
+	example(acWelcome);
+
+	int* p;
+	char* p2;
+	cout << sizeof(p) << endl;
+	cout << sizeof(p2) << endl;
+	return;
+}
+
+
+std::string solve(int M, int N) {
+	// write code here
+	int flag = 0;
+	char ch[20]{ "0123456789ABCDEF" };
+	if (M < 0) { flag = 1; M = -M; }
+	stack<char> s;
+	while (M) {
+		s.push(ch[M % N]);
+		M /= N;
+	}
+	std::string str = "";
+	while (!s.empty()) {
+		str = str + s.top();
+		s.pop();
+	}
+	if (flag) {
+		str = '-' + str;
+	}
+	return str;
+}
+
+int main()
+{
+	//exam1();
+	//exam2();
+	//exam3();
+	std::string s1 = solve(7, 2);
+	cout << s1 << endl;
+	cout << 10e2 << endl;
+	cout << 1.43E3 << endl;
+	//cour << Infinity << endl;
+	return 0;
+}
